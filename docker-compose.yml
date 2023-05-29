@@ -3,23 +3,28 @@ version: "3.7"
 volumes:
   odoo-data:
   odoo-testlogs:
+  odoo-modules:
   psql:
+
 
 services:
   odoo:
     image: iterativodo/dockerdoo:${ODOO_VERSION}
     env_file: .env
-    
+
     restart: unless-stopped
 
-    ports: ["8069:8069", "8072:8072"]
+    ports: [ "8069:8069", "8072:8072" ]
 
     volumes:
       # Host paths (addons & conf)
       - ./custom:${ODOO_EXTRA_ADDONS}:delegated
+      # Host paths (.ssh configuration)
+      - ~/.ssh/:/opt/odoo/.ssh/:cached
       # Named volumes
       - odoo-data:${ODOO_DATA_DIR}
       - odoo-testlogs:${ODOO_LOGS_DIR}
+      - odoo-modules:${ODOO_EXTRA_ADDONS}
     labels:
       - 'traefik.http.routers.${RESOLVER_NAME}.rule=Host(`${ODOO_TRAEFIK_URL_COMPANY}`)'
       - 'traefik.http.routers.${RESOLVER_NAME}.entrypoints=websecure'
