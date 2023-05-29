@@ -7,13 +7,9 @@
 	"service": "odoo",
 	"remoteUser": "odoo",
 	"shutdownAction": "stopCompose",
-	"postCreateCommand": "sudo chown odoo -R /mnt/extra-addons && sudo apt-get update && sudo apt-get install -y ssh && sudo pip install --no-cache-dir --upgrade --pre git+https://github.com/oca/pylint-odoo.git black flake8 inotify ptvsd",
-
 	"workspaceFolder": "/mnt/extra-addons",
-
 	"settings": {
 		"terminal.integrated.shell.linux": "/bin/bash",
-
 		"python.pythonPath": "/usr/local/bin/python",
 		"python.autoComplete.addBrackets": true,
 		"python.autoComplete.extraPaths": [
@@ -29,19 +25,20 @@
 			"/opt/odoo"
 		],
 		"python.linting.pylintArgs": [
-			"--rcfile", "${workspaceFolder}/.vscode/oca_pylint.cfg",
-			"--load-plugins", "pylint_odoo"
-			
+			"--rcfile",
+			"${workspaceFolder}/.vscode/oca_pylint.cfg",
+			"--load-plugins",
+			"pylint_odoo"
 		],
 		"python.linting.flake8Enabled": true,
 		"python.linting.flake8Args": [
-			"--config", "${workspaceFolder}/.vscode/travis_run_flake8.cfg"
+			"--config",
+			"${workspaceFolder}/.vscode/travis_run_flake8.cfg"
 		],
 		"python.formatting.provider": "black",
 		"python.formatting.blackArgs": [
 			"--skip-string-normalization"
 		],
-
 		"window.zoomLevel": -0.5,
 		"editor.fontSize": 16,
 		"editor.formatOnType": true,
@@ -63,7 +60,6 @@
 			"**/node_modules/*/**": true,
 			"**/.git/*/**": true
 		},
-
 		"workbench.colorTheme": "Monokai Dark Soda",
 		"workbench.iconTheme": "vscode-icons",
 		"workbench.colorCustomizations": {
@@ -78,12 +74,10 @@
 			"tab.activeBorder": "#388E3C",
 			"textLink.foreground": "#388E3C"
 		},
-
 		"xmlTools.enforcePrettySelfClosingTagOnFormat": true,
 		"xmlTools.enableXmlTreeViewCursorSync": true,
 		"git.autofetch": true
 	},
-
 	"extensions": [
 		"aaron-bond.better-comments",
 		"adamcaviness.theme-monokai-dark-soda",
